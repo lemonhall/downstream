@@ -95,16 +95,16 @@ var getNode = function(cb){
 var setBusy = function(s,cb){
 	console.log("busyL2:"+s);
 
-	var index=l2_list.indexOf(s);
+	var index=node_list.indexOf(s);
 	if (index > -1) {
 		console.log("I found it...");
-    		l2_list.splice(index, 1);
-    	console.log(l2_list);
+    		node_list.splice(index, 1);
+    	console.log(node_list);
     	l2_busy.push(s);
     	cb(null);
 	}else{
 		console.log("I couldn't found it");
-		cb("node not exist");
+		cb(null,"node not exist");
 	}
 };
 

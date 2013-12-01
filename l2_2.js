@@ -22,3 +22,10 @@ process.on('SIGINT', function() {
   node.unregNode();
   process.exit(1);
 });
+
+//不管怎样，都要清算掉资源啊，否则。。。就要让大家用协作算法把资源回收回去了
+process.on('uncaughtException', function(err) {
+  console.log('Caught exception: ' + err);
+  node.unregNode();
+  process.exit(1);
+});

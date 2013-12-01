@@ -49,9 +49,9 @@ function Node(sub,pub){
         //console.log(sock.socks[c]);
         console.log("connection:"+self.counter+" is connecting===============================");
         if(self.counter>2){
-          //var peer=self.pub.socks[self.counter];
-          //peer.write(self.pack("refuse"));
-          //self.setBusy();
+          var peer=self.pub.socks[self.counter];
+          peer.write(self.pub.pack("refuse"));
+          self.setBusy();
           self.emit("reachMaxConnections",self.counter);
         }
           self.counter=self.counter+1;
@@ -169,6 +169,8 @@ Node.prototype.regNode=function(){
       }
     });
 }
+
+
 
 Node.prototype.unregNode=function(){
   var self=this;
